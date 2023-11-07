@@ -95,6 +95,85 @@ header .container-text-header div .container-btn-header button:hover {
   cursor: pointer;
   background: black;
 }
+@keyframes fadeInAndBlur {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInAndBlur 1.6s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  transition-delay: 0.5s; 
+}
+.fade-in.active {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.5s; 
+}
+
+header .container-text-header .content-element{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin-top: 20px; 
+ }
+ header .container-text-header .content-element .content-div{
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+ }
+ header .container-text-header .content-element .content-btn-header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:25px 0 15px 0;
+ }
+ header .container-text-header .content-element .content-btn-header button{
+  font-size: 19px;
+  padding: 7px 16px;
+ }
+ header .container-text-header .content-element .content-div .fade-in{
+  width: 33%;
+  background-color: rgba(196, 196, 196, 0.671);
+  display: flex;
+  min-height: 415px;
+  flex-direction: column;
+  height: 100%;
+  border-radius: 10px;
+  margin: 0 5px;
+ }
+ header .container-text-header .content-element .content-div .fade-in h2{
+  margin:20px 0 8px 0 ;
+  text-decoration: 2px underline rgba(218, 143, 89, 0.801);
+  text-underline-offset: 4px;
+  font-size: 1.7rem;
+ }
+ header .container-text-header .content-element .content-div .fade-in .content-text{
+  width: 100%;
+  margin-left: 4px;
+  display: flex;
+  flex-direction: column;
+ }
+ header .container-text-header .content-element .content-div .fade-in:nth-child(3) .content-text{
+  text-align: left;
+  width: 93%;
+  margin: 0 auto;
+ }
+ header .container-text-header .content-element .content-div .fade-in .content-text p{
+  font-size: 19px;
+  margin: 15px 0 0 0;
+  letter-spacing: 0;
+ }
 /* --------------------------------------------- */
 main .productos {
   height: 15vh;
@@ -222,7 +301,7 @@ main
   .container-gral-banner
   .container-card-banner
   .banner-btn
-  button, main .banner article .container-gral-banner .return .cont-btn-return button {
+  button, main .banner article .container-gral-banner .return .cont-btn-return button{
   background: none;
   border: 3px solid rgba(216, 169, 135, 0.801);
   color: rgba(216, 169, 135, 0.801);
@@ -243,7 +322,7 @@ main .banner article .container-gral-banner .return {
   display: flex;
   position: absolute;
   z-index: -1;
-  transition: opacity 3s e;
+  transition: opacity 3s ease;
   color: aliceblue;
   opacity: 0;
   min-width: 50%;
@@ -283,9 +362,11 @@ main .banner article .container-gral-banner .return.view {
 
 main .banner .banner-end {
   height: 100%;
+  width: 100%;
   display: flex;
   background: rgb(206, 177, 124);
   padding: 40px 0;
+  position: relative;
 }
 main .banner .banner-end .container-card-banner {
   width: 65%;
@@ -293,6 +374,71 @@ main .banner .banner-end .container-card-banner {
   display: flex;
   align-items: center;
   flex-direction: column;
+  transition:  0.5s ease;
+  opacity: 1;
+  z-index: 500;
+  position: relative;
+}
+.container-img-banner-end {
+  transition: transform 1s ease; 
+  transform: translateX(0);
+  z-index: 1;
+}
+main .banner .banner-end .container-card-banner.hideText {
+  position: absolute;
+  z-index: -1;
+  transition:  0.5s ease;
+  opacity: 0;
+}
+.move-left{
+  transform: translateX(-200%); 
+}
+main .banner .banner-end .text2{
+  opacity: 0;
+  z-index: -10;
+  width: 0;
+  height: 0;
+  position: absolute;
+  transition: opacity 1s ease 1.2s;
+}
+main .banner .banner-end .viewText .content-ingre{
+  display: flex;
+  flex-direction: column;
+}
+main .banner .banner-end .viewText .content-ingre .container-data{
+  display: flex;
+  width: 100%;
+}
+main .banner .banner-end .viewText .content-ingre .container-data .ingredientes, main .banner .banner-end .viewText .content-ingre .container-data .infoNutri{
+  max-width: 48%;
+  width: 100%;
+  text-align: center;
+}
+main .banner .banner-end .viewText .content-ingre .ingredientes ul, main .banner .banner-end .viewText .content-ingre .infoNutri ul{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.viewText{ 
+  width: 65%;
+  opacity: 1;
+  margin-left:10px ;
+  z-index: 10;
+  transition: opacity 1s ease 1.2s;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.viewText h2{
+  color:rgb(88, 63, 25) ;
+  margin-bottom: 10px;
+}
+main .banner .banner-end .viewText .content-ingre .ingredientes h4, main .banner .banner-end .viewText .content-ingre .infoNutri h4{
+  color: white;
+  text-decoration:2px underline rgba(216, 169, 135, 0.801);
+  text-underline-offset: 4px;
+  margin-bottom: 10px;
 }
 main .banner .banner-end .container-card-banner h3 {
   color: rgb(116, 81, 29);
@@ -326,7 +472,7 @@ main
 }
 
 main .banner .container-card-banner .banner-btn button,
-main .contact .contact-form form .cont-btn button {
+main .contact .contact-form form .cont-btn button,main .banner .banner-end .viewText .content-ingre .banner-btn button {
   background: none;
   border: 3px solid rgb(88, 63, 25);
   color: rgb(88, 63, 25);
@@ -335,7 +481,7 @@ main .contact .contact-form form .cont-btn button {
 }
 main .banner .container-card-banner .banner-btn button:hover,
 main .contact .contact-form form .cont-btn button:hover,
-main .container-card .card .card-info button:hover {
+main .container-card .card .card-info button:hover, main .banner .banner-end .viewText .content-ingre .banner-btn button:hover {
   background: rgb(88, 63, 25);
   color: rgb(212, 188, 142);
   cursor: pointer;
@@ -666,6 +812,15 @@ footer > p {
     width: 90%;
     margin: 0 auto;
   }
+  header .container-text-header .content-element .content-div{
+    flex-direction: column;
+  }
+  header .container-text-header .content-element .content-div .fade-in{
+    width: 100%;
+    margin: 10px 0;
+    padding-bottom: 10px;
+    min-height: 255px !important;
+  }
   main .banner article {
     display: flex;
     height: 100%;
@@ -680,6 +835,11 @@ footer > p {
   main .banner article .container-card-banner {
     width: 100%;
   }
+  .viewText{
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
   .container-img-banner {
     order: 2;
     margin-top: 20px;
@@ -725,9 +885,8 @@ footer > p {
   }
   main .container-card .card-cont {
     width: 60%;
-    
     margin: 20px 0;
-    min-width: 300px !important;
+    min-width: 280px !important;
   }
   section .contenedor-indicadores,
   .contenedor-principal .flecha-izquierda,

@@ -1,0 +1,5 @@
+const infoData = [ { title: '¿Quienes somos?', content: 'Somos una comunidad presente en todo america latina y en muchos paises orientales. Ofrecemos nuestra gran variedad de productos elaborados con materia prima de primera cálidad. Nuestro pricipal objetivo y compromiso es entregar un producto de excelencia y accesible para todas las personas. Nuestro método de elaboración artesanal nos hace únicos y eso es la escencia de nuestra industria.' },
+{ title: '¿Porque elegirnos?', content: 'Con mas de 15 años en el mercado alimenticio, somos considerados una de las industrias mas grandes y destacadas de la región, contando con miles de usuarios de todos los rincones del mundo que nos eligen dia a dia. Exportamos a decenas de paises en todo el mundo, siendo reconocidos por nuestro gran compromiso con los productos y la excelente atención con nuestros clientes.'},
+{ title: 'Reconocimientos', rec1: '1er lugar en campeonato de dulce de leche (Argentina)', rec2: 'Premio latinoamericano de reposteria.', rec3: 'Reconocimiento internacional por excelencia en elaboración.', rec4:'Proveedor N°1 de dulce de leche de Argentina y Chile.'},]
+
+export default infoData

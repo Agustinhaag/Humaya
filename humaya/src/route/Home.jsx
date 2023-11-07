@@ -1,16 +1,34 @@
 import React,  { useEffect, useState } from "react";
 import Carousel from "../componentes/Carrusel";
+import infoData from "../componentes/elements";
+import { setupMenu } from "../componentes/setupMenu";
 
 const Home = () => {
+
+  const [mostrarInfo, setMostrarInfo]= useState(false)
+  const [currentInfo, setCurrentInfo] = useState(0)
   const [formSubmitted, setFormSubmitted] = useState(false);
-    const [errors, setErrors] = useState({});
-    const [formData, setFormData] = useState({
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({
       name: "",
       email: "",
       consulta: "",
     });
-    
-    const handleSubmit = async (e) => {
+
+      if (mostrarInfo) {
+        const delay = 1700;
+        if (currentInfo < infoData.length) {
+           setTimeout(() => {
+            setCurrentInfo(currentInfo + 1);
+          }, delay);
+        }
+      }
+  
+    const toggleInfo = () => {
+      setMostrarInfo(!mostrarInfo);
+    };
+  
+  const handleSubmit = async (e) => {
       e.preventDefault();
       const response = await fetch("http://localhost:3000/enviar", {
   method: "POST",
@@ -19,8 +37,6 @@ const Home = () => {
   },
   body: JSON.stringify(formData),
 });
-console.log('Datos del formulario:', formData)
-  console.log(response)
     if (response.status === 400) {
         const data = await response.json();
         if (data.errors) {
@@ -37,69 +53,28 @@ console.log('Datos del formulario:', formData)
       }
     }
   
-    let menu, mostrar, ocultar, enlaces;
-    function updateMostrarVisibility() {
-      if (window.innerWidth <= 768 && !menu.classList.contains("visible")) {
-        mostrar.style.display = "block";
-      } else {
-        mostrar.style.display = "none";
-      }
-    }
-  
-    const mostrarMenu = () => {
-      menu.classList.add("visible");
-      menu.style.transition = "0.6s";
-      updateMostrarVisibility();
-    };
-  
-    const ocultarMenu = () => {
-      menu.classList.remove("visible");
-      updateMostrarVisibility();
-    };
-  
+    const { init, mostrarMenu, ocultarMenu } = setupMenu();
     useEffect(() => {
-      menu = document.getElementById("menu");
-      mostrar = document.querySelector("#mostrar");
-      ocultar = document.getElementById("ocultar");
-      enlaces = document.querySelectorAll('nav a[href^="#"]');
-  
-      mostrarMenu();
-  
-      ocultarMenu();
-  
-      if (enlaces) {
-        enlaces.forEach((enlace) => {
-          enlace.addEventListener("click", () => {
-            menu.classList.remove("visible");
-            updateMostrarVisibility();
-          });
-        });
-      }
+      init();
     }, []);
   
-    useEffect(()=>{
-      const btnInfo = document.querySelectorAll("#btn-info");
-  
+  useEffect(()=>{
+  const btnInfo = document.querySelectorAll("#btn-info");
   btnInfo.forEach((btn) => {
     btn.addEventListener("click", () => {
       const article = btn.closest(".container-gral-banner");
       const visibleContent = article.querySelector(".container-card-banner");
       visibleContent.classList.add("hide");
-  
       const adicional = article.querySelector(".return");
       adicional.classList.add("view");
     });
   });
-  
   const btnReset = document.querySelectorAll("#btn-reset");
-  
   btnReset.forEach((btn) => {
     btn.addEventListener("click", () => {
       const article = btn.closest("article");
-  
       const adicional = article.querySelector(".return");
       adicional.classList.remove("view");
-  
       const visibleContent = article.querySelector(".container-card-banner");
       visibleContent.classList.remove("hide");
     });
@@ -107,6 +82,21 @@ console.log('Datos del formulario:', formData)
     },[])
 
 
+    const [infoActive, setInfoActive] = useState(false);
+    const [viewInfo, setViewInfo] = useState(false)
+
+  const handleInfoClick = () => {
+      setInfoActive(true);
+      setTimeout(() => {
+        setViewInfo(true)
+      }, 400)
+      setTimeout(() => {
+        setInfoActive(false)
+      }, 1500);
+  }
+  const returnClick = () =>{
+     setViewInfo(false);
+  }
 
   return (
     <div>
@@ -137,18 +127,53 @@ console.log('Datos del formulario:', formData)
           </div>
         </nav>
         <section className="container-text-header">
-          <div>
-            <h1>DULCES DEL ALMA</h1>
-            <p>
-              Los productos HUMAYA son elaborados desde hace más de 50 años fiel
-              a las tradiciones familiares y sabores caseros, acompañándote en
-              los momentos mas importantes de la vida.
-            </p>
-            <div className="container-btn-header">
-              <button>CONOCENOS</button>
-            </div>
+          
+      {mostrarInfo ? (
+        <div className="content-element">
+          <div className="content-div">
+             {
+        infoData.slice(0, currentInfo + 1).map((info, index) => (
+          <div
+            key={index}
+            className={`fade-in ${mostrarInfo ? 'active' : ''}`}
+          >
+            <h2>{info.title}</h2>
+            {info.content ? (
+              <div className="content-text">
+                <p>{info.content}</p>
+              </div>
+            ):(
+              <div className="content-text">
+              <p>{info.rec1}</p>
+              <p>{info.rec2}</p>
+              <p>{info.rec3}</p>
+              <p>{info.rec4}</p>
+              </div>
+            )}
           </div>
-        </section>
+))} 
+          </div>
+<div className="content-btn-header">
+  <button onClick={()=>{
+                        toggleInfo();
+                        setCurrentInfo(0);
+                        }} className="btn btn-outline-secondary"><i className="fa-solid fa-rotate-left"></i></button>
+  </div>
+</div>
+      ) : (
+        <div>
+          <h1>DULCES DEL ALMA</h1>
+          <p>
+            Los productos HUMAYA son elaborados desde hace más de 50 años fiel
+            a las tradiciones familiares y sabores caseros, acompañándote en
+            los momentos más importantes de la vida.
+          </p>
+          <div className="container-btn-header">
+            <button onClick={toggleInfo}>CONOCENOS</button>
+          </div>
+        </div>
+      )}
+    </section>
       </header>
       <main>
         <div className="productos">
@@ -253,25 +278,56 @@ console.log('Datos del formulario:', formData)
               </div>
             </div>
           </article>
-          <div className="banner-end">
-            <div className="container-card-banner">
-              <h3>ALFAJORES DE MAICENA</h3>
-              <div className="container-parrafo">
-                <p>
-                  Alfajores de dulce de leche con coco rallado, relleno con 2cm
-                  de pura dulzura. Pudiendo elegir entre dulce de leche
-                  tradicional, ligth o choconutt.
-                </p>
-                <p>Presentación en caja de 6 y 12 alfajores.</p>
-              </div>
-              <div className="banner-btn">
-                <button>+ INFO</button>
-              </div>
-            </div>
-            <div className="container-img-banner-end">
-              <img src="img/Producto4copia.png" alt="" />
-            </div>
+  <div className='banner-end'>
+    <div className={`container-card-banner ${viewInfo ? 'hideText' : ''}`} id="text1">
+        <h3>ALFAJORES DE MAICENA</h3>
+        <div className="container-parrafo">
+          <p>
+            Alfajores de dulce de leche con coco rallado, relleno con 2cm de pura dulzura. Pudiendo elegir entre dulce de leche tradicional, ligth o choconutt.
+          </p>
+          <p>Presentación en caja de 6 y 12 alfajores.</p>
+        </div>
+        <div className="banner-btn">
+          <button onClick={handleInfoClick}>+ INFO</button>
+        </div> 
+    </div>
+    <div id="text2" className={`${viewInfo ? 'viewText': 'text2'}`}>
+      <h2>1 alfajor: </h2>
+        <div className="content-ingre">
+          <div className="container-data">
+            <div className="ingredientes">
+            <h4>Ingredientes:</h4>
+            <ul>
+              <li>Manteca 200 g.</li>
+              <li>Azúcar 150 g.</li>
+              <li>Yemas 3 unidades</li>
+              <li>Harina leudante 200 g.</li>
+              <li>Almidón de maíz 300 g.</li>
+              <li>Dulce de leche 500 g.</li>
+              <li>Coco rallado ALICANTE 2 cdas.</li>
+              <li>Esencia de Vainilla 1 cda.</li>
+            </ul>
+           </div>
+           <div className="infoNutri">
+            <h4>Info nutricional:</h4>
+            <ul>
+              <li>303 Calorias</li>
+              <li>8,7g Grasa</li>
+              <li>52g Carbohidratos</li>
+              <li>4,2g Proteina</li>
+              <li>Sin agregados ni colorantes artificiales.</li>
+            </ul>
+           </div>
           </div>
+          <div className="banner-btn">
+            <button onClick={returnClick}>Volver</button>
+          </div>
+        </div>
+    </div>
+    <div className={`container-img-banner-end ${infoActive ? 'move-left' : ''}`}>
+        <img src="img/Producto4copia.png" alt="" />
+    </div>
+  </div>
         </section>
         <section className="container-caract">
           <h3>La mejor calidád para vos</h3>
