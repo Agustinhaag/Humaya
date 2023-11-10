@@ -12,7 +12,7 @@
   margin: 0 auto;
 }
 header {
-  background-image: url(../public/img/imagenCentral.png);
+  background-image: url(../../public/img/imagenCentral.png);
   background-size: cover;
   height: 100%;
   width: 100%;
@@ -436,8 +436,11 @@ main .banner .banner-end .viewText .content-ingre .ingredientes ul, main .banner
 }
 main .banner .banner-end .viewText .content-ingre .ingredientes h4, main .banner .banner-end .viewText .content-ingre .infoNutri h4{
   color: white;
-  text-decoration:2px underline rgba(216, 169, 135, 0.801);
+  text-decoration:2px underline rgb(88, 63, 25) ;
   text-underline-offset: 4px;
+  margin-bottom: 10px;
+}
+main .banner .banner-end .viewText .content-ingre .infoNutri ul li{
   margin-bottom: 10px;
 }
 main .banner .banner-end .container-card-banner h3 {
@@ -481,7 +484,7 @@ main .contact .contact-form form .cont-btn button,main .banner .banner-end .view
 }
 main .banner .container-card-banner .banner-btn button:hover,
 main .contact .contact-form form .cont-btn button:hover,
-main .container-card .card .card-info button:hover, main .banner .banner-end .viewText .content-ingre .banner-btn button:hover {
+main .container-card .card-cont .card-info button:hover, main .banner .banner-end .viewText .content-ingre .banner-btn button:hover {
   background: rgb(88, 63, 25);
   color: rgb(212, 188, 142);
   cursor: pointer;
@@ -496,7 +499,7 @@ main .contact .contact-img {
   width: 45%;
   background-size: cover;
   min-height: 100%;
-  background-image: url(../public//img/Producto4copia.png);
+  background-image: url(../../public//img/Producto4copia.png);
 }
 main .contact .contact-form {
   width: 55%;

@@ -1,0 +1,188 @@
+
+main{
+    height: 100%;
+}
+main .container-product{
+    background-color: rgb(59, 59, 59);
+}
+main .container-product .title{
+text-align: center;
+color: white;
+padding: 20px 0 5px 0;
+}
+main .container-card {
+    display: flex;
+    margin: 0 auto;
+    padding: 10px;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+main .container-card .card-cont {
+    display: flex;
+    flex-direction: column;
+    padding:  12px ;
+    height: 100%;
+    width: 33.3%;
+     overflow: hidden;
+     transition: transform 0.5s ease-in-out;
+    scroll-snap-align: start;
+  }
+  main .container-card .card-cont:hover {
+    transform: scale(1.03) ;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  main .container-card .card-cont .card-img {
+    height: 40vh;
+  }
+  main .container-card .card-cont .card-img img {
+    width: 100%;
+    height: 100%;
+  }
+  main .container-card .card-cont .card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0 0 0;
+    background: rgb(206, 177, 124);
+  }
+  main .container-card .card-cont .card-info h3 {
+    color: rgb(88, 63, 25);
+    font-weight: normal;
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+  main .container-card .card-cont .card-info p {
+    width: 73%;
+    color: #ffffff;
+  }
+  main .container-card .card-cont .card-info .container-link{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+  }
+  main .container-card .card-cont .card-info .container-link .rotate-btn, main .container-enlace .link {
+    background: none;
+    border: 2px solid rgb(88, 63, 25);
+    text-decoration: none;
+    color: rgb(88, 63, 25);
+    padding: 5px 10px;
+    font-weight: 600;
+    margin: 15px 0 0 0;
+  }
+main .container-card .card-cont .card-info .container-link .rotate-btn:hover, main .container-enlace .link:hover {
+  background: rgb(88, 63, 25);
+  color: rgb(212, 188, 142);
+  cursor: pointer;
+}
+main{
+   background: rgba(107, 107, 107, 0.664);
+   display: flex;
+   flex-direction: column;
+}
+main .container-section{
+  display: flex;
+  height: 100%;
+  padding: 30px 0 0 0;
+}
+main .container-section h3{
+  color: white;
+}
+main .container-section .container-info-basic, main .container-section .container-pasos{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+main .container-section .container-info-basic h3, main .container-section .habilidades h3, main .container-section .ingredientes h3{
+  text-align: center;
+  text-decoration: 2px underline rgb(212, 188, 142);
+  text-underline-offset: 4px;
+  margin-bottom: 18px;
+}
+main .container-section .container-info-basic .img{
+width: 85%;
+margin: 0 auto 20px auto;
+max-height: 220px;
+}
+main .container-section .container-info-basic .img img{
+  width: 100%;
+  border-radius: 10px;
+  height: 100%;
+}
+main .container-section .container-info-basic .pasos ul li{
+  margin: 5px 0;
+}
+main .container-section .habilidades{
+  width: 40%;
+}
+ .container-skill {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .container-skill h5{
+    margin-bottom: 8px;
+    color: white;
+  }
+   .container-skill .container-hab {
+    width: 90%;
+    margin: 20px auto;
+    min-width: 200px;
+  }
+   .container-skill .container-hab .skill {
+    display: flex;
+    justify-content: space-between;
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+  }
+   .container-skill .container-hab .barra {
+    width: 100%;
+    height: 5px;
+    background: rgb(0, 0, 0);
+    margin: 10px 0;
+    transition: 1.5s;
+  }
+  .container-skill .container-hab .barra .progreso0, .container-skill .container-hab .barra .progreso1, .container-skill .container-hab .barra .progreso2, .container-skill .container-hab .barra .progreso3{
+    height: 5px;
+    background: rgb(212, 188, 142);
+    transition: 1.5s;
+  }
+  main .container-section .ingredientes div ol{
+    list-style-type: upper-roman;
+  }
+  main .container-section .container-pasos p{
+    font-weight: 800;
+    margin:15px 0 0 10px;
+    font-size: 15px;
+  }
+  main .container-enlace{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
+  @media (max-width: 768px) {
+    main .container-section{
+      flex-direction: column;
+      width: 100%;
+    }
+    main .container-section .habilidades, main .container-section .container-info-basic, main .container-section .container-pasos{
+      width: 100%;
+    }
+    main .container-section .container-info-basic .img{
+      max-height:none ;
+      display: flex;
+      justify-content: center;
+    }
+    main .container-section .container-info-basic .img img{
+      height: 60%;
+      width: 70%;
+    }
+    .container-skill h5{
+      margin-left: 8px;
+    }
+    main .container-enlace{
+      margin: 10px 0;
+    }
+  }

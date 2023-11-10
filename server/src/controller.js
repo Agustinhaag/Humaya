@@ -18,3 +18,13 @@ export const enviar = async (req,res, next)=>{
         const result = await postEmail(req.body)
     }
 }
+
+export const product =  (req, res) => {
+    const __dirname = path.resolve(); 
+    res.sendFile(path.join(__dirname, '../humaya/build', 'index.html'));
+}
+
+export const cardProduct = (req, res)=>{
+    const __dirname = path.resolve(); 
+    res.sendFile(path.join(__dirname, '../humaya/build', 'index.html'));
+}

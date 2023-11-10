@@ -1,6 +1,6 @@
 import express  from "express";
 const route = express.Router();
-import {mostrar, enviar} from "./controller.js"
+import {mostrar, enviar, product, cardProduct} from "./controller.js"
 import {body} from "express-validator"
 
 
@@ -23,5 +23,9 @@ const validar = [
 
 route.get("/", mostrar );
 route.post("/enviar",validar, enviar)
+
+route.get("/products", product)
+
+route.get("/products/*", cardProduct)
 
 export default route;

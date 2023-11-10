@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
-import axios from "axios";
+import {fetchData} from "./data.js"
 
 const Carousel = () => {
   useEffect(() => {
-    const url = "https://api-humaya.onrender.com";
     const recuperar = async () => {
       try {
-        const response = await axios.get(url);
-         cargarRecetas(response.data)
+        const response = await fetchData();
+         cargarRecetas(response)
       } catch (error) {
         console.error(error);
       }

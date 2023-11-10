@@ -21,5 +21,5 @@ app.use("/", route)
 
 const port = 3000
 app.listen(port, ()=>{
-    console.log("holaaa " + port)
+    console.log("Escuchando por puerto: " + port)
 })
