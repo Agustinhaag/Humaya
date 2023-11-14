@@ -11,7 +11,7 @@ const Products = () => {
         <Header/>
         <main>
           <section className='container-product'>
-            <div className="title">
+          <div className="title">
             <h2>Nuestros productos:</h2>
           </div>          
               <CardProducts/>

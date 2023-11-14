@@ -42,7 +42,7 @@ return(
             <a href="/">Home</a>
             <a href="/products">Productos</a>
             <a href="#">Locales</a>
-            <a href="#">Contactos</a>
+            <a href="#contact">Contactos</a>
             <span className="ocultar">
               <i
                 className="fa-solid fa-xmark"
@@ -117,7 +117,7 @@ return(
         <a href="/">Home</a>
         <a href="/products">Productos</a>
         <a href="">Locales</a>
-        <a href="">Contactos</a>
+        <a href="#contact">Contactos</a>
       </div>
       <div className="menu">
         <p>NAVEGACIÓN</p>

@@ -614,7 +614,7 @@ section .contenedor-principal .container-carrusel {
 }
 section .contenedor-principal .container-carrusel .container-card {
   display: flex;
-  margin: 0 auto 20px auto;
+  margin: 0 auto;
   justify-content: space-between;
   width: 100%;
   flex-wrap: nowrap;

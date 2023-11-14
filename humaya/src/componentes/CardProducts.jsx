@@ -14,7 +14,6 @@ const CardProducts = () => {
         console.error(error);
       }
     };
-
     obtenerProductos();
   }, []);
 

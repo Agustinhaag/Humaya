@@ -264,7 +264,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <div className="productos">
+        <div className="productos" id="contact">
           <h2>CONTÁCTANOS</h2>
         </div>
         <section className="contact">
