@@ -2,10 +2,12 @@ export function setupMenu() {
     let menu, mostrar, ocultar, enlaces;
   
     function updateMostrarVisibility() {
-      if (window.innerWidth <= 768 && !menu.classList.contains("visible")) {
+      if(mostrar){
+          if (window.innerWidth <= 768 && !menu.classList.contains("visible")) {
         mostrar.style.display = "block";
       } else {
         mostrar.style.display = "none";
+      }
       }
     }
   

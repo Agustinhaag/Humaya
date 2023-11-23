@@ -2,9 +2,10 @@ import React,  { useEffect, useState } from "react";
 import Carousel from "../componentes/Carrusel"
 import { Header, Footer } from "../componentes/Header";
 import "../Css/App.css";
+import Spinner from "../componentes/Spinner";
+import { fetchData } from "../componentes/data";
 
 const Home = () => {
-
 
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
@@ -13,9 +14,10 @@ const Home = () => {
       email: "",
       consulta: "",
     });
+  const [infoActive, setInfoActive] = useState(false);
+  const [viewInfo, setViewInfo] = useState(false)
+  const [loading, setLoading] = useState(true);
 
- 
-  
   const handleSubmit = async (e) => {
       e.preventDefault();
       const response = await fetch("http://localhost:3000/enviar", {
@@ -64,10 +66,6 @@ const Home = () => {
   });
     },[])
 
-
-    const [infoActive, setInfoActive] = useState(false);
-    const [viewInfo, setViewInfo] = useState(false)
-
   const handleInfoClick = () => {
       setInfoActive(true);
       setTimeout(() => {
@@ -80,6 +78,22 @@ const Home = () => {
   const returnClick = () =>{
      setViewInfo(false);
   }
+
+  useEffect(() => {
+    const fetchDataAndLoad = async () => {
+      try {
+         await fetchData();
+       setTimeout(()=>{
+        setLoading(false);
+       },1000)  
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+    fetchDataAndLoad();
+  }, []);
+
 
   return (
     <div>
@@ -317,7 +331,8 @@ const Home = () => {
         </div>
         <section>
           <div className="contenedor-principal">
-            <button id="flecha-izquierda" className="flecha-izquierda">
+            {loading ? (<Spinner/>):(<>
+             <button id="flecha-izquierda" className="flecha-izquierda">
               <i className="fa-solid fa-chevron-left"></i>
             </button>
             <div className="container-carrusel">
@@ -326,6 +341,7 @@ const Home = () => {
             <button id="flecha-derecha" className="flecha-derecha">
               <i className="fa-solid fa-chevron-right"></i>
             </button>
+            </>)}
           </div>
         </section>
         <div className="productos">

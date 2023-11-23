@@ -580,6 +580,9 @@ section .contenedor-principal {
  padding-left: 20px;
   background: var(--colorProducto);
   position: relative;
+  min-height: 535px;
+  justify-content: center;
+  align-items: center;
 }
 section .contenedor-principal .flecha-izquierda,
 section .contenedor-principal .flecha-derecha {
@@ -679,7 +682,7 @@ main .container-card .card-cont .card-info {
   min-height: 256px;
   align-items: center;
   padding: 10px 0;
-  background: rgb(206, 177, 124);
+  background: #ceb17c;
 }
 main .container-card .card-cont .card-info h3 {
   color: rgb(88, 63, 25);

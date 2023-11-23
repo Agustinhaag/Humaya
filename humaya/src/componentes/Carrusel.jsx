@@ -88,21 +88,12 @@ const Carousel = () => {
       });
     }
 
-    const contenedorPrincipal = document.querySelector(".contenedor-principal");
     const flechaIzquierda = document.querySelector(".flecha-izquierda");
     const flechaDerecha = document.querySelector(".flecha-derecha");
 
-    const alturaMaximaFlechas = 435;
-
     function ajustarPosicionFlechas() {
-      const alturaContenedor = contenedorPrincipal.clientHeight;
-      if (alturaContenedor < alturaMaximaFlechas) {
         flechaIzquierda.style.top = "220px";
         flechaDerecha.style.top = "220px";
-      } else {
-        flechaIzquierda.style.top = "50%";
-        flechaDerecha.style.top = "50%";
-      }
     }
     ajustarPosicionFlechas();
   }, []);
